@@ -1,6 +1,10 @@
 package com.helpdesk.model.domain;
 
-public class Customer{
+/**
+ * @author Kyle Kern
+ *
+ */
+public class Subscriber{
 
 	private String firstname;
 	private String lastname;
@@ -10,11 +14,21 @@ public class Customer{
 	private String email;
 	
 		
-	public Customer() {
-		super();
+	/**
+	 * @author Kyle Kern
+	 */
+	public Subscriber() {
 	}
 
-	public Customer(String firstname, String lastname,
+	/**
+	 * @param firstname
+	 * @param lastname
+	 * @param telephone
+	 * @param username
+	 * @param password
+	 * @param email
+	 */
+	public Subscriber(String firstname, String lastname,
 			String telephone, String username, String password, String email) {
 		super();
 		this.firstname = firstname;
@@ -25,18 +39,30 @@ public class Customer{
 		this.email = email;
 	}
 
+	/**
+	 * @return firstname
+	 */
 	public String getFirstname() {
 		return firstname;
 	}
 
+	/**
+	 * @param c_firstname
+	 */
 	public void setFirstname(String c_firstname) {
 		this.firstname = c_firstname;
 	}
 
+	/**
+	 * @return lastname
+	 */
 	public String getLastname() {
 		return lastname;
 	}
 
+	/**
+	 * @param lastname
+	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
@@ -69,22 +95,37 @@ public class Customer{
 		this.password = password;
 	}
 
+	/**
+	 * @return email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	
+	/**
+	 * @return telephone
+	 */
 	public String getTelephone() {
 		return telephone;
 	}
 
+	/**
+	 * @param telephone
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * @return true
+	 */
 	public boolean validate () {		
 		 if (firstname == null) return false;
 		 if (lastname == null) return false;
@@ -128,7 +169,7 @@ public class Customer{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Customer other = (Customer) obj;
+		Subscriber other = (Subscriber) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;

@@ -2,58 +2,77 @@ package com.helpdesk.model.domain;
 
 import java.util.List;
 
+/**
+ * @author Kyle Kern
+ *
+ */
 public class Ticket{
-	private Integer id;
-	private String requester_username;
-	private String requester_email;
 	private String subject;
-	private String text_response;
-	private Integer text_response_number;
-	private String created_at;
-	private String updated_at;
+	private String textResponse;
+	private Integer textResponseNumber;
+	private String createdAt;
+	private String updatedAt;
 	private Account account;
 	private List<Account> accountList;
 	private TicketStatus status;
 	
-	private enum TicketStatus {
-		NEW, OPEN, PENDING, SOLVED, CLOSED
+	/**
+	 * @author Kyle Kern
+	 *
+	 */
+	public enum TicketStatus {
+		/** Initial status of newly created ticket */
+		NEW, 
+		/** Once Agent responded set to open */
+		OPEN, 
+		/** When Agent is waiting for customer to reply */
+		PENDING, 
+		/** Ticket has been marked complete, can be reopened */
+		SOLVED, 
+		/** Ticket has been marked complete, can't be reopened */
+		CLOSED
 	}
 	
-
+	/**
+	 * 
+	 */
 	public Ticket() {
-		super();
 	}
 	
-	
-	public Ticket(Integer id, String subject, String text_response,
-			Integer text_response_number, String created_at, String updated_at,
+	/**
+	 * @param subject
+	 * @param textResponse
+	 * @param textResponseNumber
+	 * @param createdAt
+	 * @param updatedAt
+	 * @param account
+	 * @param accountList
+	 * @param status
+	 */
+	public Ticket(String subject, String textResponse,
+			Integer textResponseNumber, String createdAt, String updatedAt,
 			Account account, List<Account> accountList, TicketStatus status) {
 		super();
-		this.id = id;
 		this.subject = subject;
-		this.text_response = text_response;
-		this.text_response_number = text_response_number;
-		this.created_at = created_at;
-		this.updated_at = updated_at;
+		this.textResponse = textResponse;
+		this.textResponseNumber = textResponseNumber;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 		this.account = account;
 		this.accountList = accountList;
 		this.status = status;
-		this.requester_username = account.getCustomerUsername();
-		this.requester_email = account.getCustomerEmail();
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+	/**
+	 * @return account
+	 */
 	public Account getAccount() {
 		return account;
 	}
 
+	/**
+	 * @param account
+	 */
 	public void setAccount(Account account) {
 		this.account = account;
 	}
@@ -73,85 +92,103 @@ public class Ticket{
 		this.accountList = accountList;
 	}
 
-
-	public String getRequester_username() {
-		return requester_username;
-	}
-
-	public void setRequester_username(Account account) {
-		this.requester_username = account.getCustomerUsername();
-	}
-
-	public String getRequester_email() {
-		return requester_email;
-	}
-
-	public void setRequester_email(Account account) {
-		this.requester_email = account.getCustomerEmail();
-	}
-
+	/**
+	 * @return subject
+	 */
 	public String getSubject() {
 		return subject;
 	}
 
+	/**
+	 * @param subject
+	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
-	public String getText_response() {
-		return text_response;
+	/**
+	 * @return the textResponse
+	 */
+	public String getTextResponse() {
+		return textResponse;
 	}
 
-	public void setText_response(String text_response) {
-		this.text_response = text_response;
+	/**
+	 * @param textResponse the textResponse to set
+	 */
+	public void setTextResponse(String textResponse) {
+		this.textResponse = textResponse;
 	}
 
-	public Integer getText_response_number() {
-		return text_response_number;
+	/**
+	 * @return the textResponseNumber
+	 */
+	public Integer getTextResponseNumber() {
+		return textResponseNumber;
 	}
 
-	public void setText_response_number(Integer text_response_number) {
-		this.text_response_number = text_response_number;
+	/**
+	 * @param textResponseNumber the textResponseNumber to set
+	 */
+	public void setTextResponseNumber(Integer textResponseNumber) {
+		this.textResponseNumber = textResponseNumber;
 	}
 
-	public String getCreated_at() {
-		return created_at;
+	/**
+	 * @return the createdAt
+	 */
+	public String getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(String created_at) {
-		this.created_at = created_at;
+	/**
+	 * @param createdAt the createdAt to set
+	 */
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public String getUpdated_at() {
-		return updated_at;
+	/**
+	 * @return the updatedAt
+	 */
+	public String getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
+	/**
+	 * @param updatedAt the updatedAt to set
+	 */
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
+	/**
+	 * @return status
+	 */
 	public TicketStatus getStatus() {
 		return status;
 	}
 
+	/**
+	 * @param status
+	 */
 	public void setStatus(TicketStatus status) {
 		this.status = status;
 	}
 	
+	/**
+	 * @return true
+	 */
 	public boolean validate () {
-		 if (id == null) return false;
 		 if (account == null) return false;
-		 if (requester_username == null) return false;
-		 if (requester_email == null) return false;
 		 if (subject == null) return false;
-		 if (text_response == null) return false;
-		 if (text_response_number == null) return false;
-		 if (created_at == null) return false;
-		 if (updated_at == null) return false;
+		 if (textResponse == null) return false;
+		 if (textResponseNumber == null) return false;
+		 if (createdAt == null) return false;
+		 if (updatedAt == null) return false;
 		 if (status == null) return false;
 		 
 		 return true;
-	 
 	}
 
 	/* (non-Javadoc)
@@ -165,24 +202,17 @@ public class Ticket{
 		result = prime * result
 				+ ((accountList == null) ? 0 : accountList.hashCode());
 		result = prime * result
-				+ ((created_at == null) ? 0 : created_at.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((requester_email == null) ? 0 : requester_email.hashCode());
-		result = prime
-				* result
-				+ ((requester_username == null) ? 0 : requester_username
-						.hashCode());
+				+ ((createdAt == null) ? 0 : createdAt.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
 		result = prime * result
-				+ ((text_response == null) ? 0 : text_response.hashCode());
+				+ ((textResponse == null) ? 0 : textResponse.hashCode());
 		result = prime
 				* result
-				+ ((text_response_number == null) ? 0 : text_response_number
+				+ ((textResponseNumber == null) ? 0 : textResponseNumber
 						.hashCode());
 		result = prime * result
-				+ ((updated_at == null) ? 0 : updated_at.hashCode());
+				+ ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		return result;
 	}
 
@@ -208,25 +238,10 @@ public class Ticket{
 				return false;
 		} else if (!accountList.equals(other.accountList))
 			return false;
-		if (created_at == null) {
-			if (other.created_at != null)
+		if (createdAt == null) {
+			if (other.createdAt != null)
 				return false;
-		} else if (!created_at.equals(other.created_at))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (requester_email == null) {
-			if (other.requester_email != null)
-				return false;
-		} else if (!requester_email.equals(other.requester_email))
-			return false;
-		if (requester_username == null) {
-			if (other.requester_username != null)
-				return false;
-		} else if (!requester_username.equals(other.requester_username))
+		} else if (!createdAt.equals(other.createdAt))
 			return false;
 		if (status != other.status)
 			return false;
@@ -235,20 +250,20 @@ public class Ticket{
 				return false;
 		} else if (!subject.equals(other.subject))
 			return false;
-		if (text_response == null) {
-			if (other.text_response != null)
+		if (textResponse == null) {
+			if (other.textResponse != null)
 				return false;
-		} else if (!text_response.equals(other.text_response))
+		} else if (!textResponse.equals(other.textResponse))
 			return false;
-		if (text_response_number == null) {
-			if (other.text_response_number != null)
+		if (textResponseNumber == null) {
+			if (other.textResponseNumber != null)
 				return false;
-		} else if (!text_response_number.equals(other.text_response_number))
+		} else if (!textResponseNumber.equals(other.textResponseNumber))
 			return false;
-		if (updated_at == null) {
-			if (other.updated_at != null)
+		if (updatedAt == null) {
+			if (other.updatedAt != null)
 				return false;
-		} else if (!updated_at.equals(other.updated_at))
+		} else if (!updatedAt.equals(other.updatedAt))
 			return false;
 		return true;
 	}
@@ -258,13 +273,11 @@ public class Ticket{
 	 */
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", requester_username="
-				+ requester_username + ", requester_email=" + requester_email
-				+ ", subject=" + subject + ", text_response=" + text_response
-				+ ", text_response_number=" + text_response_number
-				+ ", created_at=" + created_at + ", updated_at=" + updated_at
-				+ ", account=" + account + ", accountList=" + accountList
-				+ ", status=" + status + "]";
+		return "Ticket [subject=" + subject + ", textResponse=" + textResponse
+				+ ", textResponseNumber=" + textResponseNumber + ", createdAt="
+				+ createdAt + ", updatedAt=" + updatedAt + ", account="
+				+ account + ", accountList=" + accountList + ", status="
+				+ status + "]";
 	}
 
 }
