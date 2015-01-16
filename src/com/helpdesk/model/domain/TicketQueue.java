@@ -1,12 +1,17 @@
 package com.helpdesk.model.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author Kyle Kern
  *
  */
-public class TicketQueue {
+public class TicketQueue implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5493630323252624825L;
 	private String name;
 	private List<Ticket> ticketList;
 	private List<Ticket.TicketStatus> ticketStatusList;	

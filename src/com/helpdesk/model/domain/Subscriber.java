@@ -1,11 +1,17 @@
 package com.helpdesk.model.domain;
 
+import java.io.Serializable;
+
 /**
  * @author Kyle Kern
  *
  */
-public class Subscriber{
+public class Subscriber implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7805390399494605815L;
 	private String firstname;
 	private String lastname;
 	private String telephone;

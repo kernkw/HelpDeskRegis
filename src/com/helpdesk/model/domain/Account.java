@@ -1,12 +1,17 @@
 package com.helpdesk.model.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author sendgrid1
  *
  */
-public class Account{
+public class Account implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2288627077430341557L;
 	private boolean admin;
 	private Subscriber subscriber;
 	private Ticket ticket;
