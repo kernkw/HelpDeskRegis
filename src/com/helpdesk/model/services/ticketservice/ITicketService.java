@@ -20,7 +20,7 @@ public interface ITicketService {
 	 * @param ticket
 	 * @return true
 	 */
-	public boolean update(Ticket ticket);
+	public boolean updateTicket(Ticket ticket);
 	
 	/**
 	 * @param ticketNumber
@@ -32,5 +32,5 @@ public interface ITicketService {
 	 * @param ticket
 	 * @return true
 	 */
-	public boolean remove(Ticket ticket);
+	public boolean removeTicket(Ticket ticket);
 }

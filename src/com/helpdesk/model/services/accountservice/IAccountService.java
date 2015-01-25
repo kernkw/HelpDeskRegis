@@ -20,7 +20,7 @@ public interface IAccountService {
 	 * @param account
 	 * @return true
 	 */
-	public boolean update(Account account);
+	public boolean updateAccount(Account account);
 	
 	/**
 	 * @param accountNumber
@@ -32,7 +32,7 @@ public interface IAccountService {
 	 * @param account
 	 * @return true 
 	 */
-	public boolean remove(Account account);
+	public boolean removeAccount(Account account);
 	
 	
 }

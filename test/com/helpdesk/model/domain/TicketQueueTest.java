@@ -34,14 +34,14 @@ public class TicketQueueTest {
 		subscriber = new Subscriber("Firstname", "Lastname", "PhoneNumber",
 				"username", "password", "email@address.com");
 
-		account = new Account(true, subscriber, ticket1, ticketQueue1,
+		account = new Account(1, true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 
-		ticket1 = new Ticket("Subject of Ticket", "The body of the ticket", 1,
+		ticket1 = new Ticket(1,"Subject of Ticket", "The body of the ticket", 1,
 				"1/15/2015-8:00am", "1/15/2015-9:00am", account, accountList,
 				TicketStatus.OPEN);
 
-		ticket2 = new Ticket("Subject of Ticket 2", "The body of this ticket",
+		ticket2 = new Ticket(2,"Subject of Ticket 2", "The body of this ticket",
 				1, "1/15/2015-8:30am", "1/15/2015-9:30am", account,
 				accountList, TicketStatus.NEW);
 
@@ -53,10 +53,10 @@ public class TicketQueueTest {
 		ticketStatusList.add(ticket1.getStatus());
 		ticketStatusList.add(ticket2.getStatus());
 
-		ticketQueue1 = new TicketQueue("Newly Created", ticketList,
+		ticketQueue1 = new TicketQueue(1,"Newly Created", ticketList,
 				ticketStatusList);
 
-		ticketQueue2 = new TicketQueue("Newly Created", ticketList,
+		ticketQueue2 = new TicketQueue(2, "Newly Created", ticketList,
 				ticketStatusList);
 
 	}
@@ -110,7 +110,7 @@ public class TicketQueueTest {
 	@Test
 	public void testNotEqualsTicketQueue() {
 		System.out.println("starting testNotEqualsTicketQueue()");
-		ticketQueue = new TicketQueue("Closed", ticketList, ticketStatusList);
+		ticketQueue = new TicketQueue(3, "Closed", ticketList, ticketStatusList);
 		// this should assert to false since the contents of
 		// ticketQueue and ticketQueue1 class variables are NOT identical.
 		assertFalse("ticketQueue does NOT equal ticketQueue1",

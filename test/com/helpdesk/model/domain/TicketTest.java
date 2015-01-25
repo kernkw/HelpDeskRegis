@@ -16,6 +16,7 @@ import com.helpdesk.model.domain.Ticket.TicketStatus;
 public class TicketTest {
 
 	private Ticket ticket1, ticket2, ticket;
+	private int ticketNumber1, ticketNumber2, ticketNumber3;
 	private Account account1;
 	private List<Account> accountList;
 	private Subscriber subscriber;
@@ -29,14 +30,17 @@ public class TicketTest {
 	@Before
 	public void setUp() throws Exception {
 
-		account1 = new Account(true, subscriber, ticket1, ticketQueue1,
+		account1 = new Account(1, true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
+		ticketNumber1 = 1;
+		ticketNumber2 = 2;
+		ticketNumber3 = 3;
 
-		ticket1 = new Ticket("Subject of Ticket", "The body of the ticket", 1,
+		ticket1 = new Ticket(ticketNumber1, "Subject of Ticket", "The body of the ticket", 1,
 				"1/15/2015-8:00am", "1/15/2015-9:00am", account1, accountList,
 				TicketStatus.OPEN);
 
-		ticket2 = new Ticket("Subject of Ticket", "The body of the ticket", 1,
+		ticket2 = new Ticket(ticketNumber2, "Subject of Ticket", "The body of the ticket", 1,
 				"1/15/2015-8:00am", "1/15/2015-9:00am", account1, accountList,
 				TicketStatus.OPEN);
 	}
@@ -89,7 +93,7 @@ public class TicketTest {
 	@Test
 	public void testNotEqualsTicket() {
 		System.out.println("starting testNotEqualsTicket()");
-		ticket = new Ticket("Foo", "Body bar", 1, "1/15/2015-8:30am",
+		ticket = new Ticket(ticketNumber3, "Foo", "Body bar", 1, "1/15/2015-8:30am",
 				"1/15/2015-9:30am", account1, accountList, TicketStatus.NEW);
 		// this should assert to false since the contents of
 		// ticket and ticket1 class variables are NOT identical.

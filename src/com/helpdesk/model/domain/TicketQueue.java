@@ -12,6 +12,7 @@ public class TicketQueue implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -5493630323252624825L;
+	private Integer ticketNumber;
 	private String name;
 	private List<Ticket> ticketList;
 	private List<Ticket.TicketStatus> ticketStatusList;	
@@ -23,16 +24,26 @@ public class TicketQueue implements Serializable{
 	}
 	
 	/**
+	 * @param ticketNumber 
 	 * @param name
 	 * @param ticketList
 	 * @param ticketStatusList
 	 */
-	public TicketQueue(String name, List<Ticket> ticketList,
+	public TicketQueue(Integer ticketNumber, String name, List<Ticket> ticketList,
 			List<Ticket.TicketStatus> ticketStatusList) {
 		super();
+		this.setTicketNumber(ticketNumber);
 		this.name = name;
 		this.ticketList = ticketList;
 		this.ticketStatusList = ticketStatusList;
+	}
+
+	public Integer getTicketNumber() {
+		return ticketNumber;
+	}
+
+	public void setTicketNumber(Integer ticketNumber) {
+		this.ticketNumber = ticketNumber;
 	}
 
 	/**

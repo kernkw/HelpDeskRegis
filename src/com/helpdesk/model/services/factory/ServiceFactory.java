@@ -3,12 +3,15 @@
  */
 package com.helpdesk.model.services.factory;
 
+
+import com.helpdesk.model.services.accountservice.AccountServiceImpl;
 import com.helpdesk.model.services.accountservice.IAccountService;
-import com.helpdesk.model.services.accountservice.IAccountServiceImpl;
 import com.helpdesk.model.services.loginservice.ILoginService;
-import com.helpdesk.model.services.loginservice.ILoginServiceImpl;
+import com.helpdesk.model.services.loginservice.LoginServiceImpl;
+import com.helpdesk.model.services.ticketqueueservice.ITicketQueueService;
+import com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl;
 import com.helpdesk.model.services.ticketservice.ITicketService;
-import com.helpdesk.model.services.ticketservice.ITicketServiceImpl;
+import com.helpdesk.model.services.ticketservice.TicketServiceImpl;
 
 /**
  * @author sendgrid1
@@ -22,7 +25,7 @@ public class ServiceFactory {
 	 */
 	public ILoginService getLoginService()
 	   {
-	      return new ILoginServiceImpl();
+	      return new LoginServiceImpl();
 	   }
 	
 	/**
@@ -30,7 +33,7 @@ public class ServiceFactory {
 	 */
 	public IAccountService getAccountService()
 	   {
-	      return new IAccountServiceImpl();
+	      return new AccountServiceImpl();
 	   }
 	
 	/**
@@ -38,7 +41,15 @@ public class ServiceFactory {
 	 */
 	public ITicketService getTicketService()
 	   {
-	      return new ITicketServiceImpl();
+	      return new TicketServiceImpl();
+	   }
+	
+	/**
+	 * @return new ITicketQueueServiceImpl();
+	 */
+	public ITicketQueueService getTicketQueueService()
+	   {
+	      return new TicketQueueServiceImpl();
 	   }
 	
 }

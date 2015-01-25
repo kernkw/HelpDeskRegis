@@ -34,11 +34,11 @@ public class AccountTest {
 		subscriber = new Subscriber("Firstname", "Lastname", "PhoneNumber",
 				"username", "password", "email@address.com");
 
-		ticket1 = new Ticket("Subject of Ticket", "The body of the ticket", 1,
+		ticket1 = new Ticket(1, "Subject of Ticket", "The body of the ticket", 1,
 				"1/15/2015-8:00am", "1/15/2015-9:00am", account1, accountList,
 				TicketStatus.OPEN);
 
-		ticket2 = new Ticket("Subject of Ticket 2", "The body of this ticket",
+		ticket2 = new Ticket(2, "Subject of Ticket 2", "The body of this ticket",
 				1, "1/15/2015-8:30am", "1/15/2015-9:30am", account1,
 				accountList, TicketStatus.NEW);
 
@@ -50,12 +50,13 @@ public class AccountTest {
 		ticketStatusList.add(ticket1.getStatus());
 		ticketStatusList.add(ticket2.getStatus());
 
-		ticketQueue1 = new TicketQueue("Newly Created", ticketList,
+		ticketQueue1 = new TicketQueue(1,"Newly Created", ticketList,
 				ticketStatusList);
+		
 
-		account1 = new Account(true, subscriber, ticket1, ticketQueue1,
+		account1 = new Account(1, true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
-		account2 = new Account(true, subscriber, ticket1, ticketQueue1,
+		account2 = new Account(1, true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 	}
 
@@ -107,7 +108,7 @@ public class AccountTest {
 	@Test
 	public void testNotEqualsAccount() {
 		System.out.println("starting testNotEqualsAccount()");
-		account = new Account(false, subscriber, ticket1, ticketQueue1,
+		account = new Account(3, false, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 		// this should assert to false since the contents of
 		// account1 and account2 class variables are NOT identical.

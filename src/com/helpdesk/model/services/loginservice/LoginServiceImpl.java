@@ -9,7 +9,7 @@ import com.helpdesk.model.domain.Subscriber;
  * @author sendgrid1
  *
  */
-public class ILoginServiceImpl implements ILoginService{
+public class LoginServiceImpl implements ILoginService{
 
 	public boolean authenticateSubscriber(Subscriber subscriber) {
 		System.out.println ("Entering method LoginServiceImpl::authenticateSubscriber");

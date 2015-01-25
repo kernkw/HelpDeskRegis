@@ -12,6 +12,7 @@ public class Ticket implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 5070556440314088350L;
+	private Integer ticketNumber;
 	private String subject;
 	private String textResponse;
 	private Integer textResponseNumber;
@@ -45,6 +46,7 @@ public class Ticket implements Serializable{
 	}
 	
 	/**
+	 * @param ticketNumber 
 	 * @param subject
 	 * @param textResponse
 	 * @param textResponseNumber
@@ -54,10 +56,11 @@ public class Ticket implements Serializable{
 	 * @param accountList
 	 * @param status
 	 */
-	public Ticket(String subject, String textResponse,
+	public Ticket(Integer ticketNumber, String subject, String textResponse,
 			Integer textResponseNumber, String createdAt, String updatedAt,
 			Account account, List<Account> accountList, TicketStatus status) {
 		super();
+		this.setTicketNumber(ticketNumber);
 		this.subject = subject;
 		this.textResponse = textResponse;
 		this.textResponseNumber = textResponseNumber;
@@ -66,6 +69,14 @@ public class Ticket implements Serializable{
 		this.account = account;
 		this.accountList = accountList;
 		this.status = status;
+	}
+
+	public Integer getTicketNumber() {
+		return ticketNumber;
+	}
+
+	public void setTicketNumber(Integer ticketNumber) {
+		this.ticketNumber = ticketNumber;
 	}
 
 	/**

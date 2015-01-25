@@ -12,6 +12,7 @@ public class Account implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2288627077430341557L;
+	private Integer accountNumber;
 	private Boolean admin;
 	private Subscriber subscriber;
 	private Ticket ticket;
@@ -26,6 +27,7 @@ public class Account implements Serializable{
 	}
 
 	/**
+	 * @param accountNumber 
 	 * @param admin
 	 * @param subscriber
 	 * @param ticket
@@ -33,7 +35,7 @@ public class Account implements Serializable{
 	 * @param ticketList
 	 * @param ticketQueueList
 	 */
-	public Account(boolean admin, Subscriber subscriber, Ticket ticket,
+	public Account(int accountNumber,boolean admin, Subscriber subscriber, Ticket ticket,
 			TicketQueue ticketQueue, List<Ticket> ticketList,
 			List<TicketQueue> ticketQueueList) {
 		super();
@@ -45,6 +47,20 @@ public class Account implements Serializable{
 		this.ticketQueueList = ticketQueueList;
 	}
 	
+	/**
+	 * @return
+	 */
+	public Integer getAccountNumber() {
+		return accountNumber;
+	}
+
+	/**
+	 * @param accountNumber
+	 */
+	public void setAccountNumber(Integer accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
 	/**
 	 * @return subscriber
 	 */
