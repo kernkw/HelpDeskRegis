@@ -11,7 +11,7 @@ import com.helpdesk.model.services.ticketservice.TicketServiceImplTest;
 import com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImplTest;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 @RunWith(Suite.class)

@@ -13,7 +13,7 @@ import com.helpdesk.model.domain.Ticket.TicketStatus;
 import com.helpdesk.model.services.factory.ServiceFactory;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class AccountServiceImplTest extends TestCase {

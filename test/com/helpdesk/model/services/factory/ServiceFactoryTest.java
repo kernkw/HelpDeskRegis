@@ -14,7 +14,7 @@ import com.helpdesk.model.services.ticketservice.ITicketService;
 import com.helpdesk.model.services.ticketservice.TicketServiceImpl;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class ServiceFactoryTest {

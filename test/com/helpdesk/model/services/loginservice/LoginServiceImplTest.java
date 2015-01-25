@@ -6,7 +6,7 @@ import com.helpdesk.model.domain.Subscriber;
 import com.helpdesk.model.services.factory.ServiceFactory;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class LoginServiceImplTest extends TestCase {

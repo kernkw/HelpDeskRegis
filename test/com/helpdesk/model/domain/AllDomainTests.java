@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 @RunWith(Suite.class)
