@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class Account implements Serializable{
@@ -12,7 +12,7 @@ public class Account implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2288627077430341557L;
-	private boolean admin;
+	private Boolean admin;
 	private Subscriber subscriber;
 	private Ticket ticket;
 	private TicketQueue ticketQueue;
@@ -133,12 +133,7 @@ public class Account implements Serializable{
 	 * @return true
 	 */
 	public boolean validate () {
-		if (subscriber == null) return false;
-		if (ticket == null) return false;
-		if (ticketQueue == null) return false;
-		if (ticketList == null) return false;
-		if (ticketQueueList == null) return false;
-		 
+		if (admin == null) return false;
 		 return true; 
 	}
 

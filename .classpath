@@ -3,6 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="doc"/>
+	<classpathentry kind="src" path="services"/>
+	<classpathentry kind="src" path="accountservice"/>
+	<classpathentry kind="src" path="loginservice"/>
+	<classpathentry kind="src" path="ticketservice"/>
+	<classpathentry kind="src" path="factory"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="classes"/>
