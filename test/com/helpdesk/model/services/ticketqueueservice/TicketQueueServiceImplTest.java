@@ -65,7 +65,7 @@ public class TicketQueueServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#storeTicketQueue(com.helpdesk.model.domain.TicketQueue)}.
 	 */
 	public final void testStoreTicketQueue() {
 		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
@@ -74,7 +74,7 @@ public class TicketQueueServiceImplTest extends TestCase {
 	}
 
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#updateTicketQueue(com.helpdesk.model.domain.TicketQueue)}.
 	 */
 	public final void testUpdateTicketQueue() {
 		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
@@ -83,7 +83,7 @@ public class TicketQueueServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#addToTicketQueue(com.helpdesk.model.domain.Ticket)}.
 	 */
 	public final void testAddToTicketQueue() {
 		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
@@ -92,7 +92,7 @@ public class TicketQueueServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#getTicketQueue(int)}.
 	 */
 	public final void testGetTicketQueue() {
 		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
@@ -101,7 +101,7 @@ public class TicketQueueServiceImplTest extends TestCase {
 	}
 
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#removeTicketQueue(com.helpdesk.model.domain.TicketQueue)}.
 	 */
 	public final void testRemoveTicketQueue() {
 		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();

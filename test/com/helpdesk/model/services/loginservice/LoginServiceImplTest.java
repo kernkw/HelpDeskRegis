@@ -28,7 +28,7 @@ public class LoginServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.loginservice.LoginServiceImpl#authenticateSubscriber(com.helpdesk.model.domain.Subscriber)}.
 	 */
 	public final void testAuthenticateSubscriber() {
 		ILoginService loginService = (ILoginService)serviceFactory.getLoginService();

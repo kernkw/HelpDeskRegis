@@ -1,15 +1,13 @@
-/**
- * 
- */
 package com.helpdesk.model.services.accountservice;
 
 import com.helpdesk.model.domain.Account;
 
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
+
 public class AccountServiceImpl implements IAccountService {
 
 	public void storeAccount(Account account) {

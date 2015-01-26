@@ -67,7 +67,7 @@ public class AccountServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#storeAccount(com.helpdesk.model.domain.Account)}.
 	 */
 	public final void testStoreAccount() {
 		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
@@ -76,7 +76,7 @@ public class AccountServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#updateAccount(com.helpdesk.model.domain.Account)}.
 	 */
 	public final void testUpdateAccount() {
 		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
@@ -85,7 +85,7 @@ public class AccountServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#getAccount(int)}.
 	 */
 	public final void testGetAccount() {
 		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
@@ -94,7 +94,7 @@ public class AccountServiceImplTest extends TestCase {
 	}
 	
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#removeAccount(com.helpdesk.model.domain.Account)}.
 	 */
 	public final void testRemoveAccount() {
 		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();

@@ -43,8 +43,9 @@ public class TicketServiceImplTest extends TestCase {
 				TicketStatus.OPEN);
 	}
 	
+
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#storeTicket(com.helpdesk.model.domain.Ticket)}.
 	 */
 	public final void testStoreTicket() {
 		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
@@ -53,7 +54,7 @@ public class TicketServiceImplTest extends TestCase {
 	}
 
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#updateTicket(com.helpdesk.model.domain.Ticket)}.
 	 */
 	public final void testUpdateTicket() {
 		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
@@ -62,7 +63,7 @@ public class TicketServiceImplTest extends TestCase {
 	}
 
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#getTicket(int)}.
 	 */
 	public final void testGetTicket() {
 		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
@@ -71,7 +72,7 @@ public class TicketServiceImplTest extends TestCase {
 	}
 
 	/**
-	 * 
+	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#removeTicket(com.helpdesk.model.domain.Ticket)}.
 	 */
 	public final void testRemoveTicket() {
 		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();

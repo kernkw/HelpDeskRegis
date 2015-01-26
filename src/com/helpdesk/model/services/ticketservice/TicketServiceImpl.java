@@ -3,7 +3,7 @@ package com.helpdesk.model.services.ticketservice;
 import com.helpdesk.model.domain.Ticket;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class TicketServiceImpl implements ITicketService{

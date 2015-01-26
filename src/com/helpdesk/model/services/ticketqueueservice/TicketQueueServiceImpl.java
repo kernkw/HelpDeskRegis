@@ -1,13 +1,10 @@
-/**
- * 
- */
 package com.helpdesk.model.services.ticketqueueservice;
 
 import com.helpdesk.model.domain.Ticket;
 import com.helpdesk.model.domain.TicketQueue;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class TicketQueueServiceImpl implements ITicketQueueService {

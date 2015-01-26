@@ -1,8 +1,4 @@
-/**
- * 
- */
 package com.helpdesk.model.services.factory;
-
 
 import com.helpdesk.model.services.accountservice.AccountServiceImpl;
 import com.helpdesk.model.services.accountservice.IAccountService;
@@ -14,7 +10,7 @@ import com.helpdesk.model.services.ticketservice.ITicketService;
 import com.helpdesk.model.services.ticketservice.TicketServiceImpl;
 
 /**
- * @author sendgrid1
+ * @author Kyle Kern
  *
  */
 public class ServiceFactory {
