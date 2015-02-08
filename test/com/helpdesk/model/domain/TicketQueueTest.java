@@ -34,7 +34,7 @@ public class TicketQueueTest {
 		subscriber = new Subscriber("Firstname", "Lastname", "PhoneNumber",
 				"username", "password", "email@address.com");
 
-		account = new Account(1, true, subscriber, ticket1, ticketQueue1,
+		account = new Account (true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 
 		ticket1 = new Ticket(1,"Subject of Ticket", "The body of the ticket", 1,

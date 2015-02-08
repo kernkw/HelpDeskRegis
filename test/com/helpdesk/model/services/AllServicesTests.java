@@ -12,11 +12,12 @@ import com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImplTest
 
 /**
  * @author Kyle Kern
- *
+ * 
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ServiceFactoryTest.class, AccountServiceImplTest.class, 
-	LoginServiceImplTest.class, TicketServiceImplTest.class, TicketQueueServiceImplTest.class })
+@SuiteClasses({ ServiceFactoryTest.class, AccountServiceImplTest.class,
+		LoginServiceImplTest.class, TicketServiceImplTest.class,
+		TicketQueueServiceImplTest.class })
 public class AllServicesTests {
 
 }

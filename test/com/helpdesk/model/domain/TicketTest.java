@@ -30,7 +30,7 @@ public class TicketTest {
 	@Before
 	public void setUp() throws Exception {
 
-		account1 = new Account(1, true, subscriber, ticket1, ticketQueue1,
+		account1 = new Account(true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 		ticketNumber1 = 1;
 		ticketNumber2 = 2;

@@ -214,7 +214,7 @@ public class Subscriber implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "Customer [firstname=" + firstname + ", lastname=" + lastname
+		return "Subscriber [firstname=" + firstname + ", lastname=" + lastname
 				+ ", telephone=" + telephone + ", username=" + username
 				+ ", password=" + password + ", email=" + email + "]";
 	}

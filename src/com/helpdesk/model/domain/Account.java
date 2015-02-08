@@ -2,6 +2,7 @@ package com.helpdesk.model.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Kyle Kern
@@ -24,10 +25,11 @@ public class Account implements Serializable{
 	 * 
 	 */
 	public Account() {
+		UUID accountNumber = UUID.randomUUID();
+		this.setAccountNumber(accountNumber.hashCode());
 	}
 
 	/**
-	 * @param accountNumber 
 	 * @param admin
 	 * @param subscriber
 	 * @param ticket
@@ -35,10 +37,12 @@ public class Account implements Serializable{
 	 * @param ticketList
 	 * @param ticketQueueList
 	 */
-	public Account(int accountNumber,boolean admin, Subscriber subscriber, Ticket ticket,
+	public Account(boolean admin, Subscriber subscriber, Ticket ticket,
 			TicketQueue ticketQueue, List<Ticket> ticketList,
 			List<TicketQueue> ticketQueueList) {
 		super();
+		UUID accountNumber = UUID.randomUUID();
+		this.setAccountNumber(accountNumber.hashCode());
 		this.admin = admin;
 		this.subscriber = subscriber;
 		this.ticket = ticket;
@@ -46,19 +50,19 @@ public class Account implements Serializable{
 		this.ticketList = ticketList;
 		this.ticketQueueList = ticketQueueList;
 	}
-	
+
 	/**
-	 * @return
+	 * @return accountNumber
 	 */
 	public Integer getAccountNumber() {
 		return accountNumber;
 	}
 
 	/**
-	 * @param accountNumber
+	 * @param accountNumber2
 	 */
-	public void setAccountNumber(Integer accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAccountNumber (Integer accountNumber2) {
+		this.accountNumber = accountNumber2;
 	}
 
 	/**
@@ -144,13 +148,13 @@ public class Account implements Serializable{
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
+
 	/**
 	 * @return true
 	 */
 	public boolean validate () {
 		if (admin == null) return false;
-		 return true; 
+		return true; 
 	}
 
 	/* (non-Javadoc)
@@ -215,16 +219,14 @@ public class Account implements Serializable{
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		return "Account [admin=" + admin + ", subscriber=" + subscriber
-				+ ", ticket=" + ticket + ", ticketQueue=" + ticketQueue
-				+ ", ticketList=" + ticketList + ", ticketQueueList="
-				+ ticketQueueList + "]";
+		return "Account [accountNumber=" + accountNumber + ", admin=" + admin
+				+ ", subscriber=" + subscriber + ", ticket=" + ticket
+				+ ", ticketQueue=" + ticketQueue + ", ticketList=" + ticketList
+				+ ", ticketQueueList=" + ticketQueueList + "]";
 	}
+
 
 
 }

@@ -1,7 +1,10 @@
 
 package com.helpdesk.model.services.loginservice;
 
+import com.helpdesk.model.domain.Account;
 import com.helpdesk.model.domain.Subscriber;
+import com.helpdesk.model.services.IService;
+import com.helpdesk.model.services.exception.LoginException;
 
 /**
  * Validates if the subscriber is has a registered account.
@@ -9,11 +12,22 @@ import com.helpdesk.model.domain.Subscriber;
  * @author Kyle Kern
  *
  */
-public interface ILoginService {
+public interface ILoginService extends IService{
 	/**
-	 * @param subscriber contains registered username and password.
-	 * @return true
+	 * 
 	 */
-	public boolean authenticateSubscriber(Subscriber subscriber);
+	public final String NAME = "ILoginService";
+
+	/**
+	 * @param subscriber
+	 * @return Subscriber
+	 */
+	public Account registerSubscriber(Subscriber subscriber);
+	/**
+	 * @param account 
+	 * @return true
+	 * @throws LoginException 
+	 */
+	public boolean authenticateSubscriber(Account account) throws LoginException;
 
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.helpdesk.model.services.ticketqueueservice;
 
 import java.util.ArrayList;
@@ -8,11 +5,13 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+import com.helpdesk.model.business.exception.ServiceLoadException;
 import com.helpdesk.model.domain.Account;
 import com.helpdesk.model.domain.Subscriber;
 import com.helpdesk.model.domain.Ticket;
 import com.helpdesk.model.domain.TicketQueue;
 import com.helpdesk.model.domain.Ticket.TicketStatus;
+import com.helpdesk.model.services.exception.TicketQueueException;
 import com.helpdesk.model.services.factory.ServiceFactory;
 
 /**
@@ -29,19 +28,20 @@ public class TicketQueueServiceImplTest extends TestCase {
 	private List<Ticket.TicketStatus> ticketStatusList;
 	private TicketQueue ticketQueue;
 	private List<TicketQueue> ticketQueueList;
-	
+	private Integer ticketQueueNumber;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
 
-		serviceFactory = new ServiceFactory();
-		
+		serviceFactory = ServiceFactory.getInstance();
+
 		subscriber = new Subscriber("Firstname", "Lastname", "PhoneNumber",
 				"username", "password", "email@address.com");
 
-		account = new Account(1, true, subscriber, ticket1, ticketQueue,
+		account = new Account(true, subscriber, ticket1, ticketQueue,
 				ticketList, ticketQueueList);
 
 		ticket1 = new Ticket(1,"Subject of Ticket", "The body of the ticket", 1,
@@ -60,53 +60,95 @@ public class TicketQueueServiceImplTest extends TestCase {
 		ticketStatusList.add(ticket1.getStatus());
 		ticketStatusList.add(ticket2.getStatus());
 
-		ticketQueue = new TicketQueue(1,"Newly Created", ticketList,
+		ticketQueueNumber = 1;
+
+		ticketQueue = new TicketQueue(ticketQueueNumber,"Newly Created", ticketList,
 				ticketStatusList);
 	}
-	
+
 	/**
 	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#storeTicketQueue(com.helpdesk.model.domain.TicketQueue)}.
 	 */
 	public final void testStoreTicketQueue() {
-		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
-		ticketQueueService.storeTicketQueue(ticketQueue);
-        System.out.println("testStoreTicketQueue PASSED");
+		ITicketQueueService ticketQueueService;
+		try {
+			ticketQueueService = (ITicketQueueService) serviceFactory.getService(ITicketQueueService.NAME);
+			ticketQueueService.storeTicketQueue(ticketQueue);
+			System.out.println("testStoreTicketQueue PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 	/**
 	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#updateTicketQueue(com.helpdesk.model.domain.TicketQueue)}.
+	 * @throws TicketQueueException 
 	 */
-	public final void testUpdateTicketQueue() {
-		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
-		assertTrue(ticketQueueService.updateTicketQueue(ticketQueue));
-        System.out.println("testUpdateTicketQueue PASSED");
+	public final void testUpdateTicketQueue() throws TicketQueueException {
+		ITicketQueueService ticketQueueService;
+		try {
+			ticketQueueService = (ITicketQueueService) serviceFactory.getService(ITicketQueueService.NAME);
+			ticketQueueService.storeTicketQueue(ticketQueue);
+			assertTrue(ticketQueueService.updateTicketQueue(ticketQueue));
+			System.out.println("testUpdateAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
-	
+
 	/**
-	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#addToTicketQueue(com.helpdesk.model.domain.Ticket)}.
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#addToTicketQueue(TicketQueue, Ticket)}.
+	 * @throws TicketQueueException 
 	 */
-	public final void testAddToTicketQueue() {
-		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
-		assertTrue(ticketQueueService.addToTicketQueue(ticket1));
-        System.out.println("testUpdateTicketQueue PASSED");
+	public final void testAddToTicketQueue() throws TicketQueueException {        
+		ITicketQueueService ticketQueueService;
+		try {
+			ticketQueueService = (ITicketQueueService) serviceFactory.getService(ITicketQueueService.NAME);
+			
+			assertTrue(ticketQueueService.addToTicketQueue(ticketQueue, ticket1));
+			System.out.println("testUpdateTicketQueue PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
-	
+
 	/**
 	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#getTicketQueue(int)}.
 	 */
 	public final void testGetTicketQueue() {
-		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
-		assertNotNull(ticketQueueService.getTicketQueue(1));
-        System.out.println("testStoreTicketQueue PASSED");
+		ITicketQueueService ticketQueueService;
+		try {
+			ticketQueueService = (ITicketQueueService) serviceFactory.getService(ITicketQueueService.NAME);
+			ticketQueueService.storeTicketQueue(ticketQueue);
+			assertNotNull(ticketQueueService.getTicketQueue(ticketQueueNumber));
+			System.out.println("testGetAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 	/**
-	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#removeTicketQueue(com.helpdesk.model.domain.TicketQueue)}.
+	 * Test method for {@link com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl#removeTicketQueue(int)}.
 	 */
 	public final void testRemoveTicketQueue() {
-		ITicketQueueService ticketQueueService = (ITicketQueueService)serviceFactory.getTicketQueueService();
-		ticketQueueService.removeTicketQueue(ticketQueue);
-        System.out.println("testStoreTicketQueue PASSED");
+		ITicketQueueService ticketQueueService;
+		try {
+			ticketQueueService = (ITicketQueueService) serviceFactory.getService(ITicketQueueService.NAME);
+			ticketQueueService.removeTicketQueue(ticketQueueNumber);
+			System.out.println("testStoreTicketQueue PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 

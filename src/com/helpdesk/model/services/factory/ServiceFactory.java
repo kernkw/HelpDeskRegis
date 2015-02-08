@@ -1,51 +1,53 @@
 package com.helpdesk.model.services.factory;
 
-import com.helpdesk.model.services.accountservice.AccountServiceImpl;
-import com.helpdesk.model.services.accountservice.IAccountService;
-import com.helpdesk.model.services.loginservice.ILoginService;
-import com.helpdesk.model.services.loginservice.LoginServiceImpl;
-import com.helpdesk.model.services.ticketqueueservice.ITicketQueueService;
-import com.helpdesk.model.services.ticketqueueservice.TicketQueueServiceImpl;
-import com.helpdesk.model.services.ticketservice.ITicketService;
-import com.helpdesk.model.services.ticketservice.TicketServiceImpl;
+import com.helpdesk.model.services.*;
+import com.helpdesk.model.business.exception.ServiceLoadException;
+
 
 /**
  * @author Kyle Kern
  *
  */
 public class ServiceFactory {
-	
+
+	private ServiceFactory() {}
+	private static ServiceFactory serviceFactory = new ServiceFactory();
+	/**
+	 * @return serviceFactory
+	 */
+	public static ServiceFactory getInstance() {return serviceFactory;}
 
 	/**
-	 * @return new ILoginServiceImpl();
+	 * @param serviceName
+	 * @return IService
+	 * @throws ServiceLoadException
 	 */
-	public ILoginService getLoginService()
-	   {
-	      return new LoginServiceImpl();
-	   }
-	
-	/**
-	 * @return new IAccountServiceImpl();
-	 */
-	public IAccountService getAccountService()
-	   {
-	      return new AccountServiceImpl();
-	   }
-	
-	/**
-	 * @return new ITicketServiceImpl();
-	 */
-	public ITicketService getTicketService()
-	   {
-	      return new TicketServiceImpl();
-	   }
-	
-	/**
-	 * @return new ITicketQueueServiceImpl();
-	 */
-	public ITicketQueueService getTicketQueueService()
-	   {
-	      return new TicketQueueServiceImpl();
-	   }
-	
+	public IService getService(String serviceName) throws ServiceLoadException
+	{
+		try 
+		{
+			Class<?> c = Class.forName(getImplName(serviceName));
+			return (IService)c.newInstance();
+		} catch (Exception excp) 
+		{
+			serviceName = serviceName + " not loaded";
+			throw new ServiceLoadException(serviceName, excp);
+		}
+	}
+
+
+	private String getImplName (String serviceName) throws Exception
+	{
+
+		java.util.Properties props = new java.util.Properties();
+
+		String propertyFileLocation = System.getProperty("prop_location");
+
+		System.out.println ("Property File Location passed : " + propertyFileLocation);
+		java.io.FileInputStream inputStream = new java.io.FileInputStream(propertyFileLocation);
+
+		props.load(inputStream);
+		inputStream.close();
+		return props.getProperty(serviceName);	    
+	}
 }

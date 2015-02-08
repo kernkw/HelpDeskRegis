@@ -54,9 +54,9 @@ public class AccountTest {
 				ticketStatusList);
 		
 
-		account1 = new Account(1, true, subscriber, ticket1, ticketQueue1,
+		account1 = new Account(true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
-		account2 = new Account(1, true, subscriber, ticket1, ticketQueue1,
+		account2 = new Account(true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 	}
 
@@ -108,7 +108,7 @@ public class AccountTest {
 	@Test
 	public void testNotEqualsAccount() {
 		System.out.println("starting testNotEqualsAccount()");
-		account = new Account(3, false, subscriber, ticket1, ticketQueue1,
+		account = new Account(false, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
 		// this should assert to false since the contents of
 		// account1 and account2 class variables are NOT identical.

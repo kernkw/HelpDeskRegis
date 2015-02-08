@@ -1,14 +1,17 @@
 package com.helpdesk.model.services.ticketservice;
 
+import java.io.IOException;
 import java.util.List;
 
 import junit.framework.TestCase;
 
+import com.helpdesk.model.business.exception.ServiceLoadException;
 import com.helpdesk.model.domain.Account;
 import com.helpdesk.model.domain.Subscriber;
 import com.helpdesk.model.domain.Ticket;
 import com.helpdesk.model.domain.TicketQueue;
 import com.helpdesk.model.domain.Ticket.TicketStatus;
+import com.helpdesk.model.services.exception.TicketException;
 import com.helpdesk.model.services.factory.ServiceFactory;
 
 /**
@@ -32,9 +35,9 @@ public class TicketServiceImplTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 
-		serviceFactory = new ServiceFactory();
-		
-		account = new Account(1, true, subscriber, ticket, ticketQueue1,
+		serviceFactory = ServiceFactory.getInstance();
+
+		account = new Account(true, subscriber, ticket, ticketQueue1,
 				ticketList, ticketQueueList);
 		ticketNumber = 1;
 
@@ -42,42 +45,76 @@ public class TicketServiceImplTest extends TestCase {
 				"1/15/2015-8:00am", "1/15/2015-9:00am", account, accountList,
 				TicketStatus.OPEN);
 	}
-	
+
 
 	/**
 	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#storeTicket(com.helpdesk.model.domain.Ticket)}.
+	 * @throws IOException 
 	 */
-	public final void testStoreTicket() {
-		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
-		ticketService.storeTicket(ticket);
-        System.out.println("testStoreTicket PASSED");
+	public final void testStoreTicket() throws IOException {
+		ITicketService ticketService;
+		try {
+			ticketService = (ITicketService) serviceFactory.getService(ITicketService.NAME);
+			ticketService.storeTicket(ticket);
+			System.out.println("testStoreTicket PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 	/**
 	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#updateTicket(com.helpdesk.model.domain.Ticket)}.
+	 * @throws IOException 
+	 * @throws TicketException 
 	 */
-	public final void testUpdateTicket() {
-		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
-		assertTrue(ticketService.updateTicket(ticket));
-        System.out.println("testUpdate Ticket PASSED");
+	public final void testUpdateTicket() throws IOException, TicketException {
+		ITicketService ticketService;
+		try {
+			ticketService = (ITicketService) serviceFactory.getService(ITicketService.NAME);
+			ticketService.storeTicket(ticket);
+			assertTrue(ticketService.updateTicket(ticket));
+			System.out.println("testUpdateAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 	/**
 	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#getTicket(int)}.
+	 * @throws IOException 
 	 */
-	public final void testGetTicket() {
-		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
-		assertNotNull(ticketService.getTicket(ticketNumber));
-        System.out.println("testGetTicket PASSED");
+	public final void testGetTicket() throws IOException {
+		ITicketService ticketService;
+		try {
+			ticketService = (ITicketService) serviceFactory.getService(ITicketService.NAME);
+			ticketService.storeTicket(ticket);
+			assertNotNull(ticketService.getTicket(ticketNumber));
+			System.out.println("testGetTicket PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 	/**
-	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#removeTicket(com.helpdesk.model.domain.Ticket)}.
+	 * Test method for {@link com.helpdesk.model.services.ticketservice.TicketServiceImpl#removeTicket(int)}.
 	 */
 	public final void testRemoveTicket() {
-		ITicketService ticketService = (ITicketService)serviceFactory.getTicketService();
-		assertTrue(ticketService.removeTicket(ticket));
-        System.out.println("testRemoveTicket PASSED");
+		ITicketService ticketService;
+		try {
+			ticketService = (ITicketService) serviceFactory.getService(ITicketService.NAME);
+			assertTrue(ticketService.removeTicket(ticketNumber));
+			System.out.println("testRemoveTicket PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
 
 }

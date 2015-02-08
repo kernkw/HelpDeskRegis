@@ -1,15 +1,18 @@
 package com.helpdesk.model.services.accountservice;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
 
+import com.helpdesk.model.business.exception.ServiceLoadException;
 import com.helpdesk.model.domain.Account;
 import com.helpdesk.model.domain.Subscriber;
 import com.helpdesk.model.domain.Ticket;
 import com.helpdesk.model.domain.TicketQueue;
 import com.helpdesk.model.domain.Ticket.TicketStatus;
+import com.helpdesk.model.services.exception.AccountException;
 import com.helpdesk.model.services.factory.ServiceFactory;
 
 /**
@@ -35,7 +38,7 @@ public class AccountServiceImplTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 
-		serviceFactory = new ServiceFactory();
+		serviceFactory = ServiceFactory.getInstance();
 
 		subscriber = new Subscriber("Firstname", "Lastname", "PhoneNumber",
 				"username", "password", "email@address.com");
@@ -58,48 +61,86 @@ public class AccountServiceImplTest extends TestCase {
 
 		ticketQueue1 = new TicketQueue(1,"Newly Created", ticketList,
 				ticketStatusList);
-		
-		accountNumber = 1;
 
-		account = new Account(accountNumber, true, subscriber, ticket1, ticketQueue1,
+		account = new Account(true, subscriber, ticket1, ticketQueue1,
 				ticketList, ticketQueueList);
+		accountNumber = account.getAccountNumber();
 
 	}
-	
+
 	/**
 	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#storeAccount(com.helpdesk.model.domain.Account)}.
+	 * @throws IOException 
+	 * @throws AccountException 
 	 */
-	public final void testStoreAccount() {
-		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
-		accountService.storeAccount(account);
-        System.out.println("testStoreAccount PASSED");
+	public final void testStoreAccount() throws IOException, AccountException {
+		IAccountService accountService;
+		try {
+			accountService = (IAccountService) serviceFactory.getService(IAccountService.NAME);
+			accountService.storeAccount(account);
+			System.out.println("testStoreAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
-	
+
 	/**
 	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#updateAccount(com.helpdesk.model.domain.Account)}.
+	 * @throws AccountException 
+	 * @throws IOException 
 	 */
-	public final void testUpdateAccount() {
-		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
-		assertTrue(accountService.updateAccount(account));
-        System.out.println("testUpdateAccount PASSED");
+	public final void testUpdateAccount() throws AccountException, IOException {
+		IAccountService accountService;
+		try {
+			accountService = (IAccountService) serviceFactory.getService(IAccountService.NAME);
+			accountService.storeAccount(account);
+			assertTrue(accountService.updateAccount(account));
+			System.out.println("testUpdateAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
-	
+
 	/**
 	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#getAccount(int)}.
+	 * @throws IOException 
 	 */
-	public final void testGetAccount() {
-		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
-		assertNotNull(accountService.getAccount(accountNumber));
-        System.out.println("testGetAccount PASSED");
+	public final void testGetAccount() throws IOException {
+		IAccountService accountService;
+		try {
+			accountService = (IAccountService) serviceFactory.getService(IAccountService.NAME);
+			accountService.storeAccount(account);
+			assertNotNull(accountService.getAccount(accountNumber));
+			System.out.println("testGetAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		}
 	}
-	
+
 	/**
-	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#removeAccount(com.helpdesk.model.domain.Account)}.
+	 * Test method for {@link com.helpdesk.model.services.accountservice.AccountServiceImpl#removeAccount(int)}.
 	 */
 	public final void testRemoveAccount() {
-		IAccountService accountService = (IAccountService)serviceFactory.getAccountService();
-		assertTrue(accountService.removeAccount(account));
-        System.out.println("testRemoveAccount PASSED");
+		IAccountService accountService;
+		try {
+			accountService = (IAccountService) serviceFactory.getService(IAccountService.NAME);
+			accountService.storeAccount(account);
+			assertTrue(accountService.removeAccount(accountNumber));
+			System.out.println("testRemoveAccount PASSED");
+		} catch (ServiceLoadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail("ServiceLoadException");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
+
 }

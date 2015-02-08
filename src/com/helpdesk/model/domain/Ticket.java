@@ -21,7 +21,7 @@ public class Ticket implements Serializable{
 	private Account account;
 	private List<Account> accountList;
 	private TicketStatus status;
-	
+
 	/**
 	 * @author Kyle Kern
 	 *
@@ -38,13 +38,13 @@ public class Ticket implements Serializable{
 		/** Ticket has been marked complete, can't be reopened */
 		CLOSED
 	}
-	
+
 	/**
 	 * 
 	 */
 	public Ticket() {
 	}
-	
+
 	/**
 	 * @param ticketNumber 
 	 * @param subject
@@ -71,10 +71,16 @@ public class Ticket implements Serializable{
 		this.status = status;
 	}
 
+	/**
+	 * @return ticketNumber
+	 */
 	public Integer getTicketNumber() {
 		return ticketNumber;
 	}
 
+	/**
+	 * @param ticketNumber
+	 */
 	public void setTicketNumber(Integer ticketNumber) {
 		this.ticketNumber = ticketNumber;
 	}
@@ -191,20 +197,20 @@ public class Ticket implements Serializable{
 	public void setStatus(TicketStatus status) {
 		this.status = status;
 	}
-	
+
 	/**
 	 * @return true
 	 */
 	public boolean validate () {
-		 if (account == null) return false;
-		 if (subject == null) return false;
-		 if (textResponse == null) return false;
-		 if (textResponseNumber == null) return false;
-		 if (createdAt == null) return false;
-		 if (updatedAt == null) return false;
-		 if (status == null) return false;
-		 
-		 return true;
+		if (account == null) return false;
+		if (subject == null) return false;
+		if (textResponse == null) return false;
+		if (textResponseNumber == null) return false;
+		if (createdAt == null) return false;
+		if (updatedAt == null) return false;
+		if (status == null) return false;
+
+		return true;
 	}
 
 	/* (non-Javadoc)
